@@ -82,6 +82,17 @@ def search_transactions():
     # If the request method is GET, render the "search.html" template
     return render_template("search.html")
 
+@app.route('/balance')
+def total_balance():
+    total_balance  = sum(transaction['amount'] for transaction in transactions)
+    return render_template("transactions.html", transactions=transactions, total_balance=total_balance)
+
+    # total = 0
+    # for transaction in transactions:
+    #     total += transaction['amount']
+    # return render_template("transactions.html", total_balance = f"Total Balance: {total}")
+
+
 
 
 
